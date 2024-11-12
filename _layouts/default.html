@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "My Portfolio" }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/output.css' | relative_url }}">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="bg-white shadow mb-8">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-semibold text-gray-900">{{ site.title }}</h1>
+      <nav class="space-x-4">
+        <a href="{{ '/' | relative_url }}" class="text-gray-600 hover:text-gray-900">Home</a>
+        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4">
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-gray-700 py-4 mt-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
