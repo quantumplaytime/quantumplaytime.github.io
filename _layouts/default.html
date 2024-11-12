@@ -4,38 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: "My Portfolio" }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/output.css' | relative_url }}">
+  <link rel="stylesheet" href="/assets/css/input.css">
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans antialiased">
-
-  <!-- Header -->
-  <header class="bg-white shadow mb-8">
-    <h1 class="text-2xl font-semibold text-gray-900">{{ site.title }}</h1>
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <nav class="space-x-4">
-        <a href="{{ '/' | relative_url }}" class="text-gray-600 hover:text-gray-900">Home</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">About Quantum Playtime</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Meet The Creator</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Update Tracker</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Webcomics</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Art</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Other Websites</a>
-        <a href="{{ '/about' | relative_url }}" class="text-gray-600 hover:text-gray-900">Blog</a>
-      </nav>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ '/' | relative_url }}">
+        <strong>My Portfolio</strong>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-  </header>
+
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">About Quantum Playtime</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Meet The Creator</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Update Tracker</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Webcomics</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Art</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Other Websites</a>
+        <a href="{{ '/about' | relative_url }}" class="navbar-item">Blog</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Main Content -->
-  <main class="container mx-auto px-4">
-    {{ content }}
-  </main>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">{{ page.title | default: "Welcome to My Portfolio" }}</h1>
+      <div class="content">
+        {{ content }}
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-200 text-gray-700 py-4 mt-8">
-    <div class="container mx-auto text-center">
-      <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>&copy; {{ site.time | date: "%Y" }} My Portfolio. All rights reserved.</p>
     </div>
   </footer>
 
+  <script>
+    // Bulma navbar burger toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.navbar-burger');
+      const menu = document.querySelector('.navbar-menu');
+      if (burger && menu) {
+        burger.addEventListener('click', () => {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
