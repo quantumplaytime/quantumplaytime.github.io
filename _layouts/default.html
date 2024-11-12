@@ -11,57 +11,57 @@
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ '/' | relative_url }}">
-        <strong>My Portfolio</strong>
+        <strong>Quantum Playtime</strong>
       </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-start">
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">About Quantum Playtime</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Meet The Creator</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Update Tracker</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Webcomics</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Art</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Other Websites</a>
-        <a href="{{ '/about' | relative_url }}" class="navbar-item">Blog</a>
-      </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <section class="section">
-    <div class="container">
-      <h1 class="title">{{ page.title | default: "Welcome to My Portfolio" }}</h1>
-      <div class="content">
-        {{ content }}
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <aside class="p-4 menu">
+        <p class="menu-label">About</p>
+        <ul class="menu-list">
+          <li><a class="{% if page.path contains 'about/the-creator' %}is-active{% endif %}" href="{{ '/about/the-creator' | relative_url }}">The Creator</a></li>
+          <li><a href="{{ '/about/the-website' | relative_url }}">This Website</a></li>
+        </ul>
+        <p class="menu-label">Creations</p>
+        <ul class="menu-list">
+          <li><a>[Webcomic]</a></li>
+          <li><a>Painting</a></li>
+          <li><a>Printmaking</a></li>
+          <li><a>More Websites</a></li>
+        </ul>
+        <p class="menu-label">Other</p>
+        <ul class="menu-list">
+          <li><a>Site Updates</a></li>
+          <li><a>Blog</a></li>
+          <li><a>Contact Me</a></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column">
+      <!-- Main Content -->
+      <section class="section">
+        <div class="content">
+          {{ content }}
+        </div>
+      </section>
+    </div>
+    <div class="column is-one-fifth">
+      <div class="p-4 content has-text-right">
+        <p>Latest Site Update</p>
+        <p>Latest Blog post</p>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="content has-text-centered">
-      <p>&copy; {{ site.time | date: "%Y" }} My Portfolio. All rights reserved.</p>
+      <p>&copy; {{ site.time | date: "%Y" }} Quantum Playtime. All rights reserved.</p>
+      <p>All images are mine unless otherwise specified.</p>
     </div>
   </footer>
 
-  <script>
-    // Bulma navbar burger toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const burger = document.querySelector('.navbar-burger');
-      const menu = document.querySelector('.navbar-menu');
-      if (burger && menu) {
-        burger.addEventListener('click', () => {
-          burger.classList.toggle('is-active');
-          menu.classList.toggle('is-active');
-        });
-      }
-    });
-  </script>
 </body>
 </html>
