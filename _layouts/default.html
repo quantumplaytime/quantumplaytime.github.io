@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: "My Portfolio" }}</title>
-  <link rel="stylesheet" href="/assets/css/input.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
   <!-- Navbar -->
@@ -21,21 +21,22 @@
       <aside class="p-4 menu">
         <p class="menu-label">About</p>
         <ul class="menu-list">
-          <li><a class="{% if page.path contains 'about/the-creator' %}is-active{% endif %}" href="{{ '/about/the-creator' | relative_url }}">The Creator</a></li>
-          <li><a href="{{ '/about/the-website' | relative_url }}">This Website</a></li>
+          <li><a class="{% if page.path contains 'the-creator' %}is-active{% endif %}" href="{{ '/the-creator' | relative_url }}">The Creator</a></li>
+          <li><a class="{% if page.path contains 'the-website' %}is-active{% endif %}" href="{{ '/the-website' | relative_url }}">This Website</a></li>
         </ul>
         <p class="menu-label">Creations</p>
         <ul class="menu-list">
-          <li><a>[Webcomic]</a></li>
-          <li><a>Painting</a></li>
-          <li><a>Printmaking</a></li>
-          <li><a>More Websites</a></li>
+          <li><a>[Webcomic] ***DISABLED FOR NOW***</a></li>
+          <li><a>Painting ***DISABLED FOR NOW***</a></li>
+          <li><a>Printmaking ***DISABLED FOR NOW***</a></li>
+          <li><a>More Websites ***DISABLED FOR NOW***</a></li>
         </ul>
         <p class="menu-label">Other</p>
         <ul class="menu-list">
-          <li><a>Site Updates</a></li>
-          <li><a>Blog</a></li>
-          <li><a>Contact Me</a></li>
+          <li><a>Site Updates ***DISABLED FOR NOW***</a></li>
+          <li><a>Blog ***DISABLED FOR NOW***</a></li>
+          <li><a class="{% if page.path contains 'contact-me' %}is-active{% endif %}" href="{{ '/contact-me' | relative_url }}">Contact Me</a></li>
+          <li><a class="{% if page.path contains 'cheatsheet' %}is-active{% endif %}" href="{{ '/cheatsheet' | relative_url }}">MD Cheat Sheet</a></li>
         </ul>
       </aside>
     </div>
