@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Changelog"
+changelog:
+  - date: "2024-11-25"
+    title: "New Navbar Dropdown"
+    description: "Updated the behavior of the dropdown to work dynamically."
+    badges:
+      - label: "New Content"
+        image: "https://img.shields.io/badge/new_content-purple"
+  - date: "12-12-1912"
+    title: "Help Morty!"
+    description: "I'm stuck in this shitty website!"
+    badges:
+     - label: "Another update"
+       image: "https://img.shields.io/badge/redesign-goldenrod"
+---
+
+<div class="changelog">
+  {% for entry in page.changelog %}
+    <div class="changelog-entry">
+        <p class="date">{{ entry.date }}</p>
+        <h3>
+            <span class="badges">
+            {% for badge in entry.badges %}
+                <img src="{{ badge.image }}" alt="{{ badge.label }}" title="{{ badge.label }}" class="badge">
+            {% endfor %}
+            </span>
+            {{ entry.title }}
+        </h3>
+        <p class="description">{{ entry.description }}</p>
+        <br/>
+    </div>
+  {% endfor %}
+</div>
