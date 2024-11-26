@@ -8,7 +8,7 @@ changelog:
     badges:
       - label: "New Content"
         image: "https://img.shields.io/badge/new_content-purple"
-  - date: "12-12-1912"
+  - date: "1912-12-12"
     title: "Help Morty!"
     description: "I'm stuck in this shitty website!"
     badges:
@@ -19,8 +19,7 @@ changelog:
 <div class="changelog">
   {% for entry in page.changelog %}
     <div class="changelog-entry">
-        <p class="date">{{ entry.date }}</p>
-        <h3>
+        <h3 class="mb-0">
             <span class="badges">
             {% for badge in entry.badges %}
                 <img src="{{ badge.image }}" alt="{{ badge.label }}" title="{{ badge.label }}" class="badge">
@@ -28,8 +27,10 @@ changelog:
             </span>
             {{ entry.title }}
         </h3>
-        <p class="description">{{ entry.description }}</p>
+        <small class="date"><i>Released {{ entry.date | date: "%B %d, %Y" }}</i></small>
+        <p class="mt-2 description">{{ entry.description }}</p>
         <br/>
     </div>
   {% endfor %}
+  <p>Stuck? Reference the badges with this secret mouskatool: <a href="https://shields.io/badges" target="_blank">https://shields.io/badges</a>!</p>
 </div>

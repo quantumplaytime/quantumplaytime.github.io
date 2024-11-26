@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-bulma": "sass --load-path=node_modules assets/main.scss assets/main.css",
-    "start": "npm run build-bulma -- --watch"
+    "build-bulma": "sass --load-path=node_modules assets/custom.scss assets/everything.css",
+    "bundle-install": "bundle install",
+    "jekyll-serve": "bundle exec jekyll serve",
+    "start": "bundle install & npm run build-bulma -- --watch & npm run jekyll-serve"
   },
   "repository": {
     "type": "git",

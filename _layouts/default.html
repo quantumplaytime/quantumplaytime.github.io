@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: "My Portfolio" }}</title>
-  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/everything.css">
 </head>
 <body>
   <!-- Navbar -->
@@ -20,18 +20,18 @@
     <div class="column is-one-fifth" style="border-right: solid 2px #f5f5f5">
       <aside class="p-4 menu">
         <p class="menu-label">About</p>
-        <ul class="menu-list">
+        <ul class="pb-4 menu-list">
           <li><a class="{% if page.path contains 'the-creator' %}is-active{% endif %}" href="{{ '/the-creator' | relative_url }}">The Creator</a></li>
           <li><a class="{% if page.path contains 'the-website' %}is-active{% endif %}" href="{{ '/the-website' | relative_url }}">This Website</a></li>
         </ul>
         <p class="menu-label">Creations</p>
-        <ul class="menu-list">
-          <li><a>[Story I want to write] ***DISABLED FOR NOW***</a></li>
+        <ul class="pb-4 menu-list">
+          <li><a>Story</a></li>
           <li><a class="{% if page.path contains 'galleries/paintings' %}is-active{% endif %}" href="{{ '/galleries/paintings' | relative_url }}">Paintings</a></li>
           <li><a class="{% if page.path contains 'galleries/websites' %}is-active{% endif %}" href="{{ '/galleries/websites' | relative_url }}">More Websites</a></li>
         </ul>
         <p class="menu-label">Other</p>
-        <ul class="menu-list">
+        <ul class="pb-4 menu-list">
           <li><a class="{% if page.path contains 'contact-me' %}is-active{% endif %}" href="{{ '/contact-me' | relative_url }}">Contact Me</a></li>
           <li><a class="{% if page.path contains 'blog' %}is-active{% endif %}" href="{{ '/blog' | relative_url }}">Blog</a></li>
           <li><a class="{% if page.path contains 'changelog' %}is-active{% endif %}" href="{{ '/changelog' | relative_url }}">Changelog</a></li>
@@ -52,9 +52,9 @@
 
         <p class="menu-label">Latest Blog Post</p>
         {% if site.posts.size > 0 %}
-          <article>
-            <h3>{{ site.posts.first.title }}</h3>
-            <small>{{ site.posts.first.date | date: "%B %d, %Y" }}</small>
+          <article class="pb-4">
+            <h3><b>{{ site.posts.first.title }}</b></h3>
+            <small><i>{{ site.posts.first.date | date: "%B %d, %Y" }}</i></small>
             <p>{{ site.posts.first.excerpt | strip_html | truncate: 50 }}</p>
             <a href="{{ site.posts.first.url }}">Continue reading...</a>
           </article>
@@ -67,13 +67,13 @@
           {% assign recent_entry = changelog_page.changelog | first %}
           <div class="recent-changelog">
             <p class="menu-label">Latest Update</p>
-            <article class="changelog-entry">
+            <article class="changelog-entry pb-4">
               <span class="badges">
               {% for badge in recent_entry.badges %}
                 <img src="{{ badge.image }}" alt="{{ badge.label }}" title="{{ badge.label }}" class="badge">
               {% endfor %}
               </span>
-              <h3>{{ recent_entry.title }}</h3>
+              <h3><b>{{ recent_entry.title }}</b></h3>
               <a href="{{ changelog_page.url }}">See changelog</a>
             </article>
           </div>
@@ -88,7 +88,6 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>&copy; {{ site.time | date: "%Y" }} Quantum Playtime. All rights reserved.</p>
-      <p>All images are mine unless otherwise specified.</p>
     </div>
   </footer>
 
