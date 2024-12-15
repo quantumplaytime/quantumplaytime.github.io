@@ -3,9 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: "My Portfolio" }}</title>
+  <title>{{ 'Quantum Playtime' | default: "Quantum Playtime" }}</title>
   <link rel="stylesheet" href="/assets/everything.css">
 </head>
+<style>
+    @media screen and (max-width: 768px) {
+      html, body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .menu {
+        display: none;
+        overflow: hidden;
+      }
+      .menu.is-active {
+        display: block;
+      }
+      .footer {
+        flex-grow: 1;
+      }
+      .column.is-one-fifth {
+        padding-bottom: 0;
+      }
+    }
+</style>
 <body>
   <!-- Navbar -->
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
@@ -13,29 +36,35 @@
       <a class="navbar-item" href="{{ '/' | relative_url }}">
         <strong>Quantum Playtime</strong>
       </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mainMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
     </div>
   </nav>
 
   <div class="columns">
-    <div class="column is-one-fifth" style="border-right: solid 2px #f5f5f5">
-      <aside class="p-4 menu">
-        <p class="menu-label">About</p>
-        <ul class="pb-4 menu-list">
-          <li><a class="{% if page.path contains 'the-creator' %}is-active{% endif %}" href="{{ '/the-creator' | relative_url }}">The Creator</a></li>
-          <li><a class="{% if page.path contains 'the-website' %}is-active{% endif %}" href="{{ '/the-website' | relative_url }}">This Website</a></li>
+    <div class="pr-0 column is-one-fifth" style="border-right: solid 2px #f5f5f5">
+      <aside id="mainMenu" class="menu">
+        <p class="p-3 mb-0 menu-label">About</p>
+        <ul class="pb-3 menu-list">
+          <li><a class="is-radiusless {% if page.path contains 'the-creator' %}is-active{% endif %}" href="{{ '/the-creator' | relative_url }}">The Creator</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'the-website' %}is-active{% endif %}" href="{{ '/the-website' | relative_url }}">This Website</a></li>
         </ul>
-        <p class="menu-label">Creations</p>
-        <ul class="pb-4 menu-list">
+        <p class="p-3 mb-0 menu-label">Creations</p>
+        <ul class="pb-3 menu-list">
           <li><a>Story</a></li>
-          <li><a class="{% if page.path contains 'galleries/paintings' %}is-active{% endif %}" href="{{ '/galleries/paintings' | relative_url }}">Paintings</a></li>
-          <li><a class="{% if page.path contains 'galleries/websites' %}is-active{% endif %}" href="{{ '/galleries/websites' | relative_url }}">More Websites</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'galleries/paintings' %}is-active{% endif %}" href="{{ '/galleries/paintings' | relative_url }}">Paintings</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'galleries/websites' %}is-active{% endif %}" href="{{ '/galleries/websites' | relative_url }}">More Websites</a></li>
         </ul>
-        <p class="menu-label">Other</p>
-        <ul class="pb-4 menu-list">
-          <li><a class="{% if page.path contains 'contact-me' %}is-active{% endif %}" href="{{ '/contact-me' | relative_url }}">Contact Me</a></li>
-          <li><a class="{% if page.path contains 'blog' %}is-active{% endif %}" href="{{ '/blog' | relative_url }}">Blog</a></li>
-          <li><a class="{% if page.path contains 'changelog' %}is-active{% endif %}" href="{{ '/changelog' | relative_url }}">Changelog</a></li>
-          <li><a class="{% if page.path contains 'cheatsheet' %}is-active{% endif %}" href="{{ '/cheatsheet' | relative_url }}">MD Cheat Sheet</a></li>
+        <p class="p-3 mb-0 menu-label">Other</p>
+        <ul class="pb-3 menu-list">
+          <li><a class="is-radiusless {% if page.path contains 'contact-me' %}is-active{% endif %}" href="{{ '/contact-me' | relative_url }}">Contact Me</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'blog' %}is-active{% endif %}" href="{{ '/blog' | relative_url }}">Blog</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'changelog' %}is-active{% endif %}" href="{{ '/changelog' | relative_url }}">Changelog</a></li>
+          <li><a class="is-radiusless {% if page.path contains 'cheatsheet' %}is-active{% endif %}" href="{{ '/cheatsheet' | relative_url }}">MD Cheat Sheet</a></li>
         </ul>
       </aside>
     </div>
@@ -47,15 +76,15 @@
         </div>
       </section>
     </div>
-    <div class="column is-one-fifth" style="border-left: solid 2px #f5f5f5">
-      <aside class="p-4 menu">
+    <div class="column is-one-fifth is-hidden-mobile" style="border-left: solid 2px #f5f5f5">
+      <aside class="p-3 menu">
 
         <p class="menu-label">Latest Blog Post</p>
         {% if site.posts.size > 0 %}
-          <article class="pb-4">
+          <article class="pb-3">
             <h3><b>{{ site.posts.first.title }}</b></h3>
             <small><i>{{ site.posts.first.date | date: "%B %d, %Y" }}</i></small>
-            <p>{{ site.posts.first.excerpt | strip_html | truncate: 50 }}</p>
+            <p>{{ site.posts.first.excerpt | strip_html | truncate: 65 }}</p>
             <a href="{{ site.posts.first.url }}">Continue reading...</a>
           </article>
         {% else %}
@@ -67,7 +96,7 @@
           {% assign recent_entry = changelog_page.changelog | first %}
           <div class="recent-changelog">
             <p class="menu-label">Latest Update</p>
-            <article class="changelog-entry pb-4">
+            <article class="changelog-entry pb-3">
               <span class="badges">
               {% for badge in recent_entry.badges %}
                 <img src="{{ badge.image }}" alt="{{ badge.label }}" title="{{ badge.label }}" class="badge">
@@ -92,4 +121,22 @@
   </footer>
 
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  // Get the navbar burger
+  const navbarBurger = document.querySelector('.navbar-burger');
+  
+  // Add a click event
+  navbarBurger.addEventListener('click', () => {
+      // Get the target menu from the "data-target" attribute
+      const target = navbarBurger.dataset.target;
+      const menu = document.getElementById(target);
+
+      // Toggle the "is-active" class on the burger and the menu
+      navbarBurger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  });
+
+</script>
 </html>

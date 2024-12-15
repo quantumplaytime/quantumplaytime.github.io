@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
-<h3>{{ site.posts.first.title }}</h3>
+<h3 class="mb-0">{{ site.posts.first.title }}</h3>
 <small>{{ site.posts.first.date | date: "%B %d, %Y" }}</small>
-{{ content }}
+<div class="pt-4 pb-6 content">
+    {{ content }}
+</div>
+<small><a href="{{ 'blog' | relative_url }}"><- Go Back</a></small>
